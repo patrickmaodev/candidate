@@ -1,0 +1,10 @@
+# Redirect all requests to public/
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]
+
+# Deny access to app and other sensitive folders
+<DirectoryMatch "app|views|database">
+    Order Deny,Allow
+    Deny from all
+</DirectoryMatch>
